@@ -22,7 +22,7 @@ describe('Bubble Sort', function() {
 
     spyOn(window, 'compare').and.callThrough()
     bubbleSort([4,6,5,1])
-    expect(compare.calls.count()).toEqual(10);
+    expect(compare.calls.count()).toEqual(12);
     })
 
 })
