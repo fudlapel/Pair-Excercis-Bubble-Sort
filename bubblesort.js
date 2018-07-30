@@ -1,33 +1,44 @@
+let swapCount = 0
 
 function bubbleSort(array){
-    let outputArray = [];
+    //let outputArray = [];
 
-    for(var i = 0; i < array.length; i++) {
+    if (array.length <= 1){
+        return array
+    }
+
+    //let swapCount = 0
+    for(var i = 0; i < array.length - 1; i++) {
         let elem1 = array[i];
         let elem2 = array[i+1];
-        compare(elem1, elem2, outputArray);
-        console.log(outputArray);
+        if (compare(elem1,elem2)){
+            swap(elem1,elem2, array, i)
+        }
+
     }
 
-    return outputArray;
-}
-
-function compare(item1, item2, newArray){
-    let temp1 = item1
-    let temp2 = item2
-
-    if (temp1 > temp2) {
-        item2 = temp1
-        item1 = temp2
+    if (swapCount === 0){
+        return array
     }
-
-    newArray.push(item1);
-
-    if (temp2 === undefined) {
-        newArray.push(item1);
+    else {
+        swapCount = 0
+        return bubbleSort(array)
     }
 }
 
-// function swap(){
+function compare(elem1, elem2){
+    if (elem1 > elem2){
+        return true
+    }
+    return false
+}
 
-// }
+function swap(elem1, elem2,array,i){
+    //let swapCount = 0
+    function swapThese () {
+        array[i] = elem2
+        array[i+1] = elem1
+        swapCount++
+    }
+    swapThese()
+}
